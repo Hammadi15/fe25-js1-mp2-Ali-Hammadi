@@ -1,0 +1,18 @@
+.throwPointsDiv {
+  display: flex;
+  flex-direction: column;   /* stack rows vertically */
+  gap: 6px;                 /* space between rows */
+  margin-top: 10px;
+}
+
+/* style for each row (each throw) */
+.throwPointsDiv p {
+  margin: 0;
+  max-width: 5px;
+  padding: 6px 10px;
+  background: #f2f2f2;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 20px;
+  color: #333;
+}
