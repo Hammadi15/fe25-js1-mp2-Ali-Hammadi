@@ -2,29 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <form>
-      <input type="text" required id="userName" />
-      <p id="userNameDisplay"></p>
-      <div class="throwPointsDiv">
-        <p id="thowPoints"></p>
-      </div>
-      <button id="throwButton">Throw</button>
-      <button>send</button>
-      <button id="freezeButton">Freeze</button>
-      <p id="roundPoint">totalPoint</p>
+    <h1></h1>
 
-      <p id="RoundPoint"></p>
-      <p id="totalPoint"></p>
+    <input id="nameInput" type="text" placeholder="Ange ditt namn" required/>
+    <button id="nameButton" >Start</button>
+    <p id="roundPoint"></p>
+    <p id="Round"></p>
+    <p id="totalPoint"></p>
 
-      <p id="round">round</p>
-      <p id="endMessage"></p>
-    </form>
-    <script src="script.js"></script>
+    <h2 id="Score"></h2>
+    <h1 id="won"></h1>
+
+    <button id="rollButton">Roll</button>
+    <button id="freezeButton">Freeze</button>
   </body>
 </html>

@@ -1,59 +1,57 @@
-const form = document.querySelector("form");
-let RNG = Math.ceil(Math.random() * 6);
+let totalPoints = 0;
+let roundPoints = 0;
 let rounds = 0;
-let totalGameScore = 0;
+const playerName = document.querySelector("h1");
+const enterName = document.querySelector("#nameInput");
+let RNG = Math.ceil(Math.random() * 6);
+const roundPointPEl = document.querySelector("#roundPoint");
+const totalPointBtn = document.querySelector("#totalPoint");
+const wonH1El = document.querySelector("#won");
+const freezeBtn = document.querySelector("#freezeButton");
+const rollBtn = document.querySelector("#rollButton");
 
-const roundElm = document.querySelector("#round");
-
-const freezeButton = document.querySelector("#freezeButton");
-
+const RoundEl = document.querySelector("#Round");
 console.log(RNG);
-const listThrowListOne = [];
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
 
-  const name = document.querySelector("#userName").value;
-  console.log(name);
-  const userPel = document.querySelector("#userNameDisplay");
-  userPel.innerText = name;
-});
+const startBtn = document
+  .querySelector("#nameButton")
+  .addEventListener("click", () => {
+    playerName.innerText = enterName.value;
+    enterName.style.display = "none";
+    document.querySelectorAll("button")[0].style.display = "none";
+  });
 
-const throwButton = document.querySelector("#throwButton");
-throwButton.addEventListener("click", (event) => {
-  event.preventDefault();
-
-  const roundPoint = document.querySelector("#roundPoint");
-  const RoundPoint = document.querySelector("#RoundPoint");
-  listThrowListOne.push(RNG);
-
-  const throwPointTotal = listThrowListOne.reduce((sum, num) => sum + num, 0);
-
-  roundPoint.innerHTML = listThrowListOne.join("<br>");
-  RoundPoint.innerText = throwPointTotal;
-
+rollBtn.addEventListener("click", () => {
+  console.log("throw");
   RNG = Math.ceil(Math.random() * 6);
-  rounds++;
-  roundElm.innerText = `amount of rounds ${rounds}`;
+  const scoreH1El = document.querySelector("#Score");
+  scoreH1El.innerText = `You Rolled:${RNG}`;
+
+  console.log(RNG);
+  roundPoints += RNG;
+
+  roundPointPEl.innerText = `Round Point: ${roundPoints}`;
 
   if (RNG === 1) {
-    roundElm.innerText = 0;
-    RoundPoint.innerText = 0;
-    listThrowListOne.length = 0;
-    rounds++;
+    roundPoints = 0;
+    roundPointPEl.innerText = `Round Point: ${0}`
+
   }
 });
-freezeButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  const totalPoint = document.querySelector("#totalPoint");
-  const endMessage = document.querySelector("#endMessage");
 
-  const RoundPoint = listThrowListOne.reduce((sum, num) => sum + num, 0);
-  totalGameScore += RoundPoint;
-  totalPoint.innerText = totalGameScore;
+freezeBtn.addEventListener("click", () => {
+  console.log("frreze");
+  rounds++;
+  RoundEl.innerText = `Round: ${rounds}`;
 
-  listThrowListOne.length = 0;
+  totalPoints += roundPoints;
+  totalPointBtn.innerText = `total points: ${totalPoints}`;
+  roundPoints = 0;
+  roundPointPEl.innerText = `Round Point: ${0}`;
 
-  if (totalGameScore >= 100) {
-    endMessage.innerText = `Spelet är slut! Det tog ${rounds} omgångar.`;
+  if (totalPoints >= 100) {
+    wonH1El.innerText = `You Won with ${totalPoints} points and ${rounds} rounds`;
+       rollBtn.disabled = true;
+    freezeBtn.disabled = true;
   }
 });
