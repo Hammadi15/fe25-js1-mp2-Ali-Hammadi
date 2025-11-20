@@ -33,7 +33,7 @@ throwButton.addEventListener("click", (event) => {
 
   RNG = Math.ceil(Math.random() * 6);
   rounds++;
-  roundElm.innerText= `amount of rounds ${rounds}`
+  roundElm.innerText = `amount of rounds ${rounds}`;
 
   if (RNG === 1) {
     roundElm.innerText = 0;
@@ -52,8 +52,6 @@ freezeButton.addEventListener("click", (event) => {
   totalPoint.innerText = totalGameScore;
 
   listThrowListOne.length = 0;
-
-
 
   if (totalGameScore >= 100) {
     endMessage.innerText = `Spelet är slut! Det tog ${rounds} omgångar.`;
